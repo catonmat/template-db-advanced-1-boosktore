@@ -1,9 +1,16 @@
 <div class="container">
-  <h1>Book catalogue</h1>
+  <br>
+  <h2>Book catalogue: <%= @version %></h2>
+  <p>Click on the Rack Mini Profiler in the top-left of the screen to see the loading time!</p>
+  <hr>
+  <code><%= @code %></code>
+  <hr>
   <ol>
     <% @books.each do |book| %>
       <li>
-        <strong><%= book.title %></strong> by <%= book.author.name %>
+        <strong><%= book.title %></strong> by <%= book.author.name %> 
+        <strong>Published by:</strong><em><%= book.author.publishers.map { |publisher| publisher.content }.join(';') %></em>
+        <hr/>
       </li>
     <% end %>
   </ol>
