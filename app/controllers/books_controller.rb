@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   end
 
   def eager_loading
-    @version = 'Eager Loading (Faster SQL query)'
+    @version = 'Eager Loading (4 SQL queries)'
     @code = "@books = Book.includes(author: [:publishers]) # nested `includes`; publishers belongs to author."
 
     @books = Book.includes(author: [:publishers])
@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   end
 
   def lazy_loading
-    @version = 'Lazy Loading (Generates N+1 problem)'
+    @version = 'Lazy Loading (1001 SQL queries)'
     @code = "@books = Book.all"
 
     @books = Book.all
