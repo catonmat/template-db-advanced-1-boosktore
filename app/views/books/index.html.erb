@@ -3,7 +3,12 @@
   <h2><%= @version %></h2>
   <p>Click on the Rack Mini Profiler in the top-left of the screen to see the loading time!</p>
   <hr>
-  <code><%= @code %></code>
+  <code>
+    # app/controllers/books_controller.rb<br>
+    def index<br>
+    &nbsp&nbsp<%= @code %><br>
+    end
+  </code>
   <hr>
   <ol>
     <% @books.each do |book| %>

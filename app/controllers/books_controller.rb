@@ -5,8 +5,8 @@ class BooksController < ApplicationController
   end
 
   def eager_loading
-    @version = 'Eager Loading (4 SQL queries)'
-    @code = "@books = Book.includes(author: [:publishers]) # nested `includes`; publishers belongs to author."
+    @version = 'Eager Loading (No N+1 problem present)'
+    @code = "@books = Book.includes(author: [:publishers]) # publishers belongs to authors; we are including two extra tables."
 
     @books = Book.includes(author: [:publishers])
 
@@ -14,8 +14,8 @@ class BooksController < ApplicationController
   end
 
   def lazy_loading
-    @version = 'Lazy Loading (1001 SQL queries)'
-    @code = "@books = Book.all"
+    @version = 'Lazy Loading (N+1 problem present)'
+    @code = "@books = Book.all # We do not include authors or publishers; instead, in the view we iterate through all 500 books and make 500+ more queries to authors and publishers." 
 
     @books = Book.all
 
